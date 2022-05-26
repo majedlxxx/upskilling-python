@@ -16,10 +16,10 @@
 * Big O Notation
 
 #### Week four
-* Data structures and algorithms
+* Object Oriented Programming
 
 ### Week five
-* Data structures and algorithms continued
+* Data structures and algorithms.
 
 ### Week six
 * HTTP Protocol
