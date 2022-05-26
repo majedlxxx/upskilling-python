@@ -6,14 +6,14 @@
 * [Installation guide](https://www.ssl.com/how-to/enable-linux-subsystem-install-ubuntu-windows-10/)
 * No need to install git-scm or python.
 
-    `
+    ```
 
         sudo apt update
         sudo apt install python3
         sudo apt install git
         sudo apt install python3-pip # Will be used later
     
-    `
+    ```
 
 ### Option 2: Windows
 * [Python](https://python.org)
@@ -39,7 +39,6 @@
         * Interface => How you interact with your software:
             * GUI / Graphical user interface.
             * CLI / Command line interface.
-    *
 
 
 
