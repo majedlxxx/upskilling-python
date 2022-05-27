@@ -1,10 +1,12 @@
 # Tools used in this course
 
 ### Option 1: WSL/Ubuntu/Linux (Prefered)
-* Open source kernel.
+* Open source k* IDE: Text editor / where we  our codes eg: visual sutdio code.ernel.
 * get used to Linux environment.
 * [Installation guide](https://www.ssl.com/how-to/enable-linux-subsystem-install-ubuntu-windows-10/)
 * No need to install git-scm or python.
+* IDE: Text editor / where we  our codes eg: visual sutdio code.
+
 
     ```
 
@@ -18,6 +20,7 @@
 ### Option 2: Windows
 * [Python](https://python.org)
 * [git-scm](https://git-scm.com/https://git-scm.com/) this tools comes with a cli terminal simillar to Linux's CLI.
+* IDE: Text editor / where we  our codes eg: visual sutdio code.
 
 ### Terms to be used during
 * Open Source:
@@ -39,7 +42,6 @@
         * Interface => How you interact with your software:
             * GUI / Graphical user interface.
             * CLI / Command line interface.
-
 
 
 
