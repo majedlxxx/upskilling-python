@@ -1,3 +1,5 @@
+# Linux Basics 
+
 ### Linux command structure:
 * command/script options arguments
 * Eg (mkdir -p 1/2/3/4/5):
@@ -157,3 +159,29 @@
 ### clear:
 * it clears your terminal.
 * or use: CTRL + L
+
+
+### Dealing with spaces in Linux
+* mkdir new folder
+
+
+### Exercise:
+* Navigate to /tmp
+* create the following files/folders:
+
+```
+ f=> file / d=> directory
+upskilling:
+    new folder(d):
+        new1(d):
+            a(f)
+
+```    
+* create a copy of new1 call it new2
+* move new2 to /tmp
+* show your results using ls command
+* remove all create file and folder
+
+
+cd ..\
+cp new1
