@@ -53,11 +53,11 @@ if age >= 18:
 
 print("outside the if block")
     
-#identation is important in python because it is a block of code
-#identation error is checked before running the code
+#indentation is important in python because it is a block of code
+#indentation error is checked before running the code
 
-#To start a block we use : and identation(tabs or spaces)
-#To end a block we get out of the identation
+#To start a block we use : and indentation(tabs or spaces)
+#To end a block we get out of the indentation
 
 '''
 you can drive if you are 18 or older
@@ -80,7 +80,7 @@ else: # <16
     print("You can't drive")
     
     
-def driver_check(age): # it's bad practive to let the user input anything within the function
+def driver_check(age): # it's bad practice to let the user input anything within the function
     if age >= 18:
         print("You can drive")
     elif age >= 16:
@@ -120,18 +120,18 @@ output:
 '''
 in an if statement if you are using the or logical operator
 if condition1 or condition2: => true or x is always
-    if condition1 is statisfied, condition2 will not be checked
+    if condition1 is satisfied, condition2 will not be checked
 
 if you are using the and logical operator:
     if condition1 and condition2: => False and x is always False
-    if condition1 is not statisfied, condition2 will not be checked
+    if condition1 is not satisfied, condition2 will not be checked
 '''
 
 
 
 
 
-# rewrting driver_check function        
+# rewriting driver_check function        
 def driver_check(age):
     if age >= 18 or (age >= 16 and input("Do you have your parents permission to drive? (y/n): ") == 'y'):
         print("You can drive")

@@ -92,7 +92,7 @@ print("A3: ", a3)
 #In and not in operators
 
 while True:
-    answer = input("Do you have a drving license? (y/n)")
+    answer = input("Do you have a driving license? (y/n)")
     if answer in ['y', 'n', 'yes', 'no','Y', 'N', 'Yes', 'No']:
         break
     print("Please answer with y or n")
@@ -102,7 +102,7 @@ while True:
 print("Rephrasing:")
 
 while True:
-    answer = input("Do you have a drving license? (y/n)")
+    answer = input("Do you have a driving license? (y/n)")
     if answer not in ['y', 'n', 'yes', 'no','Y', 'N', 'Yes', 'No']:
         print("Please answer with y or n")
     else:
@@ -124,7 +124,7 @@ print(l[-1])
 print(l[-1][1])
 
 
-# Values upacking means that you can unpack a multivalue data structure into multiple variables
+# Values unpacking means that you can unpack a multivalue data structure into multiple variables
 x, y = [1,2]
 
 

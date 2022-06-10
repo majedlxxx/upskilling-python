@@ -5,8 +5,8 @@
 
 '''
     This is a multiline comment
-    Docstrings are used to document your code
-    Loadded by the interpreter into the mememory.
+    DocStrings are used to document your code
+    Loaded by the interpreter into the memory.
 
 '''
 
@@ -36,7 +36,7 @@ print(y)
 
 # variables in python are dynamically typed. that means you can change the type of a variable
 '''
-    in other programming lanaguges you have to declare the type of the variable.
+    in other programming languages you have to declare the type of the variable.
     eg:
     c/c++:
     int x = 5;
@@ -131,7 +131,7 @@ print(y)
 x = "test"
 x = 'test'
 # In python you can use either single or double quotes to define a string.
-x = "he's porgrmming in python"
+x = "he's programming in python"
 x = 'he\'s programming in python' # escaping the single quote
 x = 'he said "I like python"'
 x = "he said \"I like python\""
@@ -149,7 +149,7 @@ print(X)
 x = "Hello " + "World"
 print(x)
 
-#multiplaction between strings and integers:
+#multiplication between strings and integers:
 x = "Hello" * 3
 print(x)
 
@@ -166,7 +166,7 @@ print(y)# y has the lower case value of x
 
 
 
-print(x.lower()) # will lowercase all the cahracters in x
+print(x.lower()) # will lowercase all the characters in x
 print(x.upper()) # will uppercase all the characters in x
 print(x.capitalize()) # will capitalize the first character in x and lowercase the rest
 
@@ -176,7 +176,7 @@ print(x.lower.__doc__)
 
 x = x.lower() 
 '''
-Since the lower method return a copy of the string, x will not be changed, so to change x we need to
+Since the lower method returns a copy of the string, x will not be changed, so to change x we need to
 assign the return value of the method to x. //overwrite it's value
 '''
 
@@ -209,7 +209,7 @@ x = "Hello Ahmad, how are you? ... Ahmad...."
 print(x.replace("Ahmad", "Majed")) # will replace all the occurrences of the first argument with the second argument.
 print("Original x:")
 print(x)
-# I can replace to ommit any character in the string for example to ommit spaces:
+# I can replace to commit any character in the string for example to commit spaces:
 
 print(x.replace(' ', ''))
 
@@ -284,7 +284,7 @@ print("Hello\\nWorld")
 
 
 '''
-Slcing is a way to get a substring from a string
+Slicing is a way to get a substring from a string
 Syntax: x[start:end:step] => end is not included
 default start is 0
 default end is len(x)
@@ -309,7 +309,7 @@ name = "Majed"
 job = "Software Engineer"
 age = 26
 
-print("My name is", name, "and I am a", job, "and I am", age, "years old.") # method 1, the arugment sep is being used to separate the arguments with spaces.
+print("My name is", name, "and I am a", job, "and I am", age, "years old.") # method 1, the argument sep is being used to separate the arguments with spaces.
 print("My name is " + name + " and I am a " + job + " and I am " + str(age) + " years old.") # method 2 concatenation of strings / Casting more on that later
 print("My name is {0} and I am a {1} and I am {2} years old.".format(name, job, age)) # method 3 using format
 print(f"My name is {name} and I am a {job} and I am {age} years old.") # method 4 using fstring introduced in python 3.6
@@ -325,7 +325,7 @@ print arguments:
 '''
 Math operations:
  Addition +
- sbutraction -
+ subtraction -
  multiplication *
  division / => this will always produce a float
  real floor division // => this will always produce an integer => floor(a/b)
@@ -361,14 +361,14 @@ or => if any argument is true the result is true else false
 and => if all arguments are true the result is true else false
 
 Priorities:
-1. Praenthesis
+1. Parenthesis
 2. And
 3. Or
 
 '''
 
 
-print("******* Numeric oeprations")
+print("******* Numeric operations")
 print(f"1+2 = {1+2}")
 print(f"1-2 = {1-2}")
 print(f"5*2 = {5*2}")
@@ -382,14 +382,14 @@ print(f'5-2/2*11+22 = {5-2/2*11+22}')
 print(f'(5-2)/2*11+22 = {(5-2)/2*11+22}')
 
 
-print("******* Bitwise  oeprations")
+print("******* Bitwise  operations")
 print(f"5|2 = {5|2}")
 print(f"5&2 = {5&2}")
 print(f"5^2 = {5^2}")
 print(f"5|2&3 = {5|2&3}")
 
 
-print("******* Logical oeprations")
+print("******* Logical operations")
 print(f"True or False = {True or False}")
 print(f"True or True = {True or True}")
 print(f"False or False = {False or False}")
@@ -415,7 +415,7 @@ so far we know the following classes / datatypes:
 2. float
 3. str
 4. bool
-to use casting do the follwing
+to use casting do the following
 y = int(x)
 
 int(1.5)
@@ -437,7 +437,7 @@ str(1.5)
 str(True)
 '''
 
-#to convert a varaible overwrite it with the new value of the new type
+#to convert a variable overwrite it with the new value of the new type
 print("Casting example")
 x = "5.5"
 print(type(x))
@@ -456,7 +456,7 @@ print(type(age))
 age = int(age)
 print(type(age))
 
-# or you can do the follwing age=int(input("Enter your age: "))
+# or you can do the following age=int(input("Enter your age: "))
 
 
 

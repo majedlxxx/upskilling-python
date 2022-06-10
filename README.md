@@ -12,7 +12,7 @@
 ### Week three
 * Functions.
 * python modules and packages
-* Basic algorithms and data structers
+* Basic algorithms and data structures
 * Big O Notation
 
 #### Week four

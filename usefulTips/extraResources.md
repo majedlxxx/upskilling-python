@@ -9,7 +9,7 @@
 ## Front-end Web development
 * [w3schools HTML](https://www.w3schools.com/html/html_css.asp)
 * [w3schools CSS](https://www.w3schools.com/css/default.asp)
-* [w3shcools Javascript](https://www.w3schools.com/js/default.asp)
+* [w3schools Javascript](https://www.w3schools.com/js/default.asp)
 
 ## SQL Databases
 *  [w3schools SQL](https://www.w3schools.com/sql/sql_intro.asp)

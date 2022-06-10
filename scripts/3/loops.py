@@ -62,7 +62,7 @@ while i<10:
 
 #Range function
 
-# iteratable objects are objects that can be looped over / iterated over usually can be casted to a list
+# iterable objects are objects that can be looped over / iterated over usually can be casted to a list
 # range objects are iterable objects that can be looped over / iterated over.
 '''
 range(start, stop, step)

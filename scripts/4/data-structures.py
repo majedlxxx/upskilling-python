@@ -28,7 +28,7 @@ All values within a set are unique.
 To add a value to a list we can use .add method. example below:
 a.add(5)
 However when try to add a value that already exists in the set, it will not add the value.
-Unliked list where when you add a value to it, it will always be added to the end, where in sets, it will be added in whatever order the interpreter sees fit for faster data retrieval.
+Unlike a list where when you add a value to it, it will always be added to the end, where in sets, it will be added in whatever order the interpreter sees fit for faster data retrieval.
 sets can hold different types of data.
 To create empty set use set() => a = set()
 
@@ -78,7 +78,7 @@ print(a)
 
 #Dictionary
 '''
-To define an emtpy dictionary use {}, or dict()
+To define an empty dictionary use {}, or dict()
 a = {} or a = dict()
 a = {
     "key1": "value1",

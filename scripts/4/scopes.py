@@ -15,7 +15,7 @@ def f1():
 
 def f2():
     T += 1 # You cannot change the global variable value in a function
-    print(T) #This won't work becuase T now is a local variable and the statement above is not valid
+    print(T) #This won't work because T now is a local variable and the statement above is not valid
     z = 7 # this value can only be used within the function / local variable
     for i in range(5):
         y = 5 #Local variable can only be used within the function

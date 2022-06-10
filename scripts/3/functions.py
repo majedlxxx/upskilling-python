@@ -49,10 +49,10 @@ Notice that we can assign a,b to variable of any type, this is possible in pytho
 
 print("\n"*5)
 #keyword parameters
-def divsion(a, b):
+def division(a, b):
     return a / b
 
-print(divsion(b=10, a=5))
+print(division(b=10, a=5))
 
 
 '''
@@ -94,8 +94,8 @@ print(hello_world())
 
 def square(length):
     area = length * length
-    circumeference = length * 4
-    return area, circumeference # this will return a tuple => more on that later
+    circumference = length * 4
+    return area, circumference # this will return a tuple => more on that later
 
-area, circumeference =  square(2)
-print(f"Area: {area} Circumference: {circumeference}")
+area, circumference =  square(2)
+print(f"Area: {area} Circumference: {circumference}")
