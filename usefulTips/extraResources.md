@@ -12,5 +12,8 @@
 * [w3schools Javascript](https://www.w3schools.com/js/default.asp)
 
 ## SQL Databases
-*  [w3schools SQL](https://www.w3schools.com/sql/sql_intro.asp)
+* [w3schools SQL](https://www.w3schools.com/sql/sql_intro.asp)
 * [PostgreSQL Youtube Video](https://www.youtube.com/watch?v=qw--VYLpxG4&t=298s)
+
+## Git
+* [Youtube video](https://www.youtube.com/watch?v=SWYqp7iY_Tc&t=62s)
