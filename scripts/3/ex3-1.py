@@ -5,7 +5,7 @@ While loop practice
 3. Print the average grade.
 '''
 
-no_of_students = input("Enter number of students: ")
+no_of_students = input("Enter number of students: ") #4
 no_of_students = int(no_of_students)
 
 total = 0

@@ -29,9 +29,11 @@ else:
 4. less than <
 5. greater than or equal to >=
 6. less than or equal to <=
-used in lists, tuples, dictionaries, sets etc... => more on that later
+used in lists, tuples, dictionaries, sets etc... => more on that later #Review 3/lists.py
 8. in
 9. not in
+10. is
+11. is not
 
 
 
