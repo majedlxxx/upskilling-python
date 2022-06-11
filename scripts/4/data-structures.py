@@ -101,7 +101,8 @@ updates = {"algebra": 30, "geography": 40, "Physics": 50} => 2 grades have been 
 all_subjects.update(updates)
 
 '''
-#Check example 4.2
+#Check example 4.2, 4.3
+
 
 # Looping over a dictionary
 student = {
@@ -126,9 +127,11 @@ for key in student: #By default will loop over the keys
     print(f"{key}: {student[key]}") 
     
 print("\n\nMethod3")
-for key, value in student.items():
+for key, value in student.items(): #=> [('FirstName', 'Ahmad'), ('LastName', 'Lutfi')...]
     print(f"{key}: {value}")
 
+
+#student.items => zip(student.keys(), student.values())
 
 
 print("\n\n\n-----------------")
@@ -142,4 +145,33 @@ firstName => xx
 grades
     => Algebra: 60
 
+'''
+
+'''
+Tuple:
+Static data. / Cannot be changed.
+allows integer based indexing.a[0]
+Used when we have fixed data. 
+
+
+List
+Dynamic data => can be resized, modified ...
+allows integer based indexing.a[0]
+Used when have dynamic data that can change while running the program.
+
+Set
+Dynamic data => can be resized, modified ...
+Does not allow any type of indexing => Data is not sorted =>more on that later
+Won't allow multiple instances of any value.
+We use when want unique data.
+Faster data search. => for example when searching for the integer 1 in a set => 1 in a => it's way faster than list or tuples
+
+Dictionary
+Dynamic data => can be resized, modified ...
+Allows key, value based indexing  => a["firstname"] => "majed"
+{
+    "firstname": "majed",
+    "lastname": "lutfi"
+}
+We can't repeat a key => this will override the value
 '''

@@ -120,7 +120,7 @@ for i in range(len(students)): #for(int i = 0; i < students.length; i++)
     
 
 
-for i, j in zip(range(0,10), range(20,30)): # zip(range(0,10), range(20,30)) => (0,20), (1,21), (2,22), (3,23), (4,24), (5,25), (6,26), (7,27), (8,28), (9,29) Will be discussed later
+for i, j in zip(range(0,10), range(20,30)): # zip(range(0,10), range(20,30)) => [(0,20), (1,21), (2,22), (3,23), (4,24), (5,25), (6,26), (7,27), (8,28), (9,29]) Will be discussed later
     print(f"i = {i}, j = {j}")
     
     

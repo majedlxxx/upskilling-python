@@ -25,6 +25,9 @@ Return value:
     1. I can return a value
     2. I can return nothing
     3. I can return multiple values => not common in other programming languages
+
+
+After returning from a function by using the return keyword or simply finishing the code execution I will always return to the line after the line in which I called the function.
 '''
 
 

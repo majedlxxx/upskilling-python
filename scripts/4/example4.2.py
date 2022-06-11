@@ -1,69 +1,183 @@
+from audioop import add
+
+from regex import P
+
+
+students  = list() # list of dictionaries
+homeworks = set() # This will be used in case we added homeworks before adding new students
+# We chose list to have unique values. and for faster search
+#through out this example we are assuming that the student's name is unique.
+
+# empty: [], list()
+
+#pass =>means do nothing
+
+def student_exists(name):  # Replace with find student return index => Later
+    for student in students:
+        if student['name'] == name:
+            return True
+    return False # Reaching this line means that I have already looped over the list above and the if statement was never satisfied 
+    
 '''
-Enter the number of students:
-For each student enter his first name, last name and his age, number of subjects.
-of each subject enter the subject name and it's grade.
-calculate the average grade of each student.
-output
+[{"name": "Ahmad"}, {"name": "Khalid"}]
+student ={"name": "Khalid"}
 
-[
-{
-    "FirstName": "Ahmad",
-    "LastName": "Lutfi",
-    "Age": 20,
-    "grades": {
-        "Algebra": 90,
-        "English": 80
-    }
-    "avg": 85.0
-},
-{
-    "FirstName": "...",
-    "LastName": "..",
-    "Age": 22,
-    "grades": {
-        "Algebra": 60,
-        "Arabic": 80,
-        "Calculus": 70
-    }
-    "avg": 70.0
-}
+student_exists("Mahmoud")
 
 
-]
+
+
 '''
 
 
-n = input("Enter number of students: ")
-n = int(n)
+def add_student(name, course):
+    if student_exists(name):
+        print("Student already exists")
+        return
 
-results = []
+    student = {
+        "name": name,
+        "course": course,
+    }
 
-for std in range(n):
-    student = dict()
-    student["FirstName"] = input("Enter student's first name: ")
-    student["LastName"] = input("Enter student's last name: ")
-    student["Age"] = int(input("Enter student's age: "))
-    student["grades"] = dict()
-    no_of_subjects = int(input("Enter number of subjects: "))
+    if len(homeworks) > 0:
+        student['homeworks'] = dict()
+        for homework in homeworks:
+            student['homework'] = 0
+    students.append(student)
+
+
+def change_class(name, course):
+    if not student_exists(name): # The condition will only be satisfied if the student doesn't exist
+        # the above condition can be replace with: 1. student_exists(name) == False or 2. student_exists(name) != True
+        print("User doesn't exist")
+        return
+
+    for student in students:
+        if student['name'] == name: #=> [{"name": "Ahmad", "course": "Python"}, {"name": "Khalid", "course": "python"}]
+            student['course'] = course
+            break # or return #No need to continue the loop if I have already found the student
     
+
+def remove_student(name):
+    if not student_exists(name):
+        print("Student doesn't exist")
+        return
+
+    for student in students:
+        if student['name'] == name:
+            students.remove(student)
+            break
+
+
+def add_homework(homework_name):
+    if homework_name in homeworks: # => we used set to have faster search
+        print("The Homework exists")
+        return
+    homeworks.add(homework_name)
+    for student in student:
+        if 'homeworks' not in student:
+            student['homeworks'] = dict() # can be improved
+        student["homeworks"][homework_name] = 0
     
-    for sub in range(no_of_subjects):
-        sub_name = input("Enter subject name: ")
-        student["grades"][sub_name] = float(input("Enter grade: "))
+
+
+def change_grade(name, hw, new_grade):
+    pass
+
+
+
+def grade_homework(name, hw, grade):
+    pass
+
+def print_report():
+    print(students)
+
+
+
+
+
+
+
+#For testing remove it later
+def fill_dummy_data():
+    add_student("Ahmad", "Python")
+    add_student("Khalid", "Python")
+
+
+fill_dummy_data()
+
+while True:
+    print('''Enter:
+    1. to add a student
+    2. to change student's course
+    3. to change student's grade
+    4. to add a homework
+    5. to grade a homework
+    6. to print a report.
+    7. remove student
+    0. to exit
+    ''')
+
+    choice = input(">> ").strip()
+
+    if not choice.isnumeric():
+        print("Invalid option")
+        continue
         
+    choice = int(choice) # 1
+
+    if choice not in range(0,8):
+        print("Invalid option")
+        continue
+
+    if choice == 0:
+        break #or use exit()
     
-    total = 0.0
-    
-    for grade in student["grades"].values():
-        total += grade
+    if choice == 6:
+        print_report()
+
+    if choice == 1:
+        name = input("Enter student's name: ")
+        course = input("Enter course's name: ")
+        add_student(name, course)
         
-    #The 3 lines above can be replaced with total = sum(student["grades"].values()) => preferred / faster
-        
-    student["avg"] = total/no_of_subjects
+    if choice == 2:
+        name = input("Enter student's name: ")
+        course = input("Enter course's name: ")
+        change_class(name, course)
+        #line_after the function call
+
+    if choice == 7:
+        name = input("Enter student's name: ")
+        remove_student(name)
+
+    if choice == 4:
+        homework_name = input("Enter homework's name")
+        add_homework(homework_name)
+
     
-    results.append(student)
-    
-    print("-------------\n\n")
-    
-    
-print(results)
+
+
+
+print("Exited")
+
+'''
+break: breaks us our of a loop => can only be used within a while or a for loops
+exit: exits the entire program
+use break when you can
+'''
+
+'''
+Add student
+Change class
+Change grade
+Add Homework
+Grade Homework
+Print Report
+
+export excel sheet => Later
+Link with database => Later
+'''
+
+

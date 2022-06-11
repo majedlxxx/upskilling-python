@@ -17,3 +17,7 @@
 
 ## Git
 * [Youtube video](https://www.youtube.com/watch?v=SWYqp7iY_Tc&t=62s)
+
+
+## Practice: 
+* [Warmup codingbat](https://codingbat.com/python/Warmup-1)
