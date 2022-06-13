@@ -1,8 +1,3 @@
-from audioop import add
-
-from regex import P
-
-
 students  = list() # list of dictionaries
 homeworks = set() # This will be used in case we added homeworks before adding new students
 # We chose list to have unique values. and for faster search
@@ -23,10 +18,6 @@ def student_exists(name):  # Replace with find student return index => Later
 student ={"name": "Khalid"}
 
 student_exists("Mahmoud")
-
-
-
-
 '''
 
 
@@ -75,7 +66,7 @@ def add_homework(homework_name):
         print("The Homework exists")
         return
     homeworks.add(homework_name)
-    for student in student:
+    for student in students:
         if 'homeworks' not in student:
             student['homeworks'] = dict() # can be improved
         student["homeworks"][homework_name] = 0
@@ -83,15 +74,43 @@ def add_homework(homework_name):
 
 
 def change_grade(name, hw, new_grade):
-    pass
+    if not student_exists(name):
+        print("Student doesn't exist")
+        return
+    
+    if hw not in homeworks:
+        print("Homework doesn't exist")
+        return
 
-
-
-def grade_homework(name, hw, grade):
-    pass
+    for student in students:
+        if student['name'] == name:
+            student['homeworks'][hw] = new_grade
 
 def print_report():
-    print(students)
+    #Printing headers
+    print("\n\n********* Student Report *********")
+    print("name\t\tcourse", end="")
+    for homework in homeworks:
+        print(f"\t\t{homework}", end="")
+    print() # Just to add a new line
+    
+    rows = []
+    for student in students:
+        
+        row = f"{student['name']}\t\t{student['course']}"
+        for homework in homeworks:
+            row += f'\t\t{student["homeworks"][homework]}'
+        
+        rows.append(row)
+    
+    for row in rows:
+        print(row)
+        
+    print("*****\n\n")
+    
+    
+    
+    # print(students)
 
 
 
@@ -103,6 +122,8 @@ def print_report():
 def fill_dummy_data():
     add_student("Ahmad", "Python")
     add_student("Khalid", "Python")
+    add_homework("Homework 1")
+    
 
 
 fill_dummy_data()
@@ -116,6 +137,7 @@ while True:
     5. to grade a homework
     6. to print a report.
     7. remove student
+    8. export to excel => Later
     0. to exit
     ''')
 
@@ -155,6 +177,13 @@ while True:
     if choice == 4:
         homework_name = input("Enter homework's name")
         add_homework(homework_name)
+    
+    if choice in (3, 5): # or choice == 3 or choice == 5
+        name = input("Enter student's name: ")
+        # if not student_exists(name): print("Name doesn't exit");continue
+        hw = input("Enter homework's name: ")
+        new_grade = input("Enter new grade: ")
+        change_grade(name, hw, new_grade)
 
     
 
@@ -181,3 +210,13 @@ Link with database => Later
 '''
 
 
+
+
+
+# x = {
+#     "name: "Ahmad",
+#     "course: "Python",
+#     "homeworks":{
+#         "Homework 1": 0
+#     }
+# }
