@@ -132,3 +132,7 @@ x, y = [1,2]
  x, y, z = [1,2] => Not enough value to unpack
 x, y = [1,2,3] => Too many value to unpack
 '''
+
+# str.join(list/tuple/set) => return a string with the elements of the list/tuple/set separated by the string
+
+'--'.join(['a', 'b', 'c']) # returns 'a--b--c'

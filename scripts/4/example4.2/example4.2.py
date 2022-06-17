@@ -112,7 +112,26 @@ def print_report():
     
     # print(students)
 
-
+def export_to_excel():
+    f = open("students.csv", "w")
+    headers = "Name,Course"
+    if len(homeworks) > 0:
+        headers += ','
+        headers += ','.join(homeworks)
+    
+    f.write(headers+"\n")
+    
+    for student in students:
+        row = f"{student['name']},{student['course']}"
+        if len(homeworks):
+            row += ','
+            for homework in homeworks:
+                row += f"{student['homeworks'][homework]},"
+        row = row.rstrip(',')
+        f.write(row+'\n')
+    
+    f.close()
+        
 
 
 
@@ -149,7 +168,7 @@ while True:
         
     choice = int(choice) # 1
 
-    if choice not in range(0,8):
+    if choice not in range(0,9):
         print("Invalid option")
         continue
 
@@ -175,7 +194,7 @@ while True:
         remove_student(name)
 
     if choice == 4:
-        homework_name = input("Enter homework's name")
+        homework_name = input("Enter homework's name: ")
         add_homework(homework_name)
     
     if choice in (3, 5): # or choice == 3 or choice == 5
@@ -184,6 +203,9 @@ while True:
         hw = input("Enter homework's name: ")
         new_grade = input("Enter new grade: ")
         change_grade(name, hw, new_grade)
+        
+    if choice == 8:
+        export_to_excel()
 
     
 

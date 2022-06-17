@@ -1,0 +1,12 @@
+Dear NAME,
+
+Congratulations you have been selected to work as a POSITION at X.
+
+Your starting day will be STARTDATE.
+
+offered salary is SALARY/month
+
+Please reply to this offer by EXPDATE.
+
+Regards,
+HR team
