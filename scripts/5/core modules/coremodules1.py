@@ -77,7 +77,6 @@ print("Heads percentage",  round(results.count('H')/len(results)*100, 2))
 
 
 
-
 results = []
 alphas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -95,21 +94,50 @@ for i in range(1000):
         results.append(str(random.randint(1,500)))
         
 
-print(results)
+# print(results)
     
 
     
     
 '''
-In Linux terminal we have 3 main files:
-1. stdin: input from the user (Linux  id: 0)
-2. stdout: output to the user (Linux id: 1)
-3. stderr: output to the user if there is an error (Linux id: 2)
+In Linux terminal we have 3 main files/streams:
+1. stdin: input from the user (Linux  file_no: 0)
+2. stdout: output to the user (Linux file_no: 1) => Default output
+3. stderr: output to the user if there is an error (Linux file_no: 2)
 '''
 
+
+'''
+Redirecting the output in linux terminal:
+Syntax:
+command file_no> file_name
+if file_name is not specified then the output is redirected to the default output (stdout)
+command > output.txt # Rerdirects the stdout to output.txt
+
+For example for logging purposes:
+we can redirect errors to log file to be revieed later
+
+python3 file.py > output.txt 2> error.txt
+
+'''
         
 for number in results:
     if number.isnumeric():
-        print(int(number) )
+        print(int(number))
     else:
         print(number, " Not a number", file=sys.stderr)
+        
+        
+        
+
+
+'''
+Example:
+let's say you have created a module called fff.py and you placed that in a directory called /home/majed/custom_modules.
+By default the interpreter searches for the module in the directories found within the sys.path variable
+to modify the sys.path variable we can use the following command:
+import sys
+sys.path.append('/home/majed/custom_modules')
+import fff
+
+'''

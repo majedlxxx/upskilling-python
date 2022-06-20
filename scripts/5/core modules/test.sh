@@ -1,0 +1,14 @@
+python3 coremodules2.py 2000857207
+python3 coremodules2.py 9882034741
+python3 coremodules2.py 9991048787
+python3 coremodules2.py 9982005941
+python3 coremodules2.py 2000175156
+python3 coremodules2.py 2000244718
+python3 coremodules2.py 9942039838
+python3 coremodules2.py 9922011958
+python3 coremodules2.py 9932047464
+python3 coremodules2.py 2000119842
+python3 coremodules2.py 9921014393
+python3 coremodules2.py 9972050033
+python3 coremodules2.py 9971028445
+python3 coremodules2.py 9902052058

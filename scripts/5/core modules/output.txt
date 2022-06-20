@@ -1,0 +1,2 @@
+['coremodules2.py', 'Majed']
+Hello Majed
