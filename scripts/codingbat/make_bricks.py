@@ -55,9 +55,20 @@ def make_bricks(small, big, goal):
     return small >= goal
 
 
-def withdraw_from_atm(available, amount):
+def withdraw_from_atm(available, amount): # 86
     # return True of False
-    pass
+    available_bills = list(available.keys())
+    available_bills.sort(reverse=True)
+    for bill in available_bills:
+        bills_needed = int(amount/bill) #1
+      
+        amount -= min(bills_needed, available[bill]) * bill
+        # if bills_needed > available[bill]:
+        #         amount -= bill * available[bill]
+        # else:
+        #     amount -= bill * bills_needed
+    return amount == 0
+    
 
 
 available = {
@@ -73,4 +84,10 @@ available = {
     50: 30,
 }
 
-available_bills = sorted(available.keys())
+
+available_bills = list(available.keys())
+available_bills.sort(reverse=True)
+
+# available_bills = sorted(available.keys()) 
+
+# available_bills = available_bills[::-1]

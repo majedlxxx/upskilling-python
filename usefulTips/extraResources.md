@@ -21,3 +21,10 @@
 
 ## Practice: 
 * [Warmup codingbat](https://codingbat.com/python/Warmup-1)
+
+
+
+## Codeforces problemsets
+* [Team](https://codeforces.com/problemset/problem/231/A)
+* [Is your horseshoe on the other hoof?](https://codeforces.com/problemset/problem/228/A)
+* [System of Equations](https://codeforces.com/problemset/problem/214/A)
