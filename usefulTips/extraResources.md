@@ -28,3 +28,5 @@
 * [Team](https://codeforces.com/problemset/problem/231/A)
 * [Is your horseshoe on the other hoof?](https://codeforces.com/problemset/problem/228/A)
 * [System of Equations](https://codeforces.com/problemset/problem/214/A)
+* [Good Matrix Elements](https://codeforces.com/problemset/problem/177/A2)
+* [Remove Smallest](https://codeforces.com/problemset/problem/1399/A)
