@@ -6,7 +6,6 @@ subject => name, credit hours
 Instructors => id, name, list of subjects
 
 '''
-
 class Major:
     #name
     #credit hours
@@ -24,11 +23,16 @@ class Major:
 
 class Student:
     # id, name, major, average
-    def __init__(self, id, name, major, average):
+    def __init__(self, id, name, major, average, optional_subjects=list()):
         self.id = id
         self.name = name
         self.major = major #Instance of the Major class / not str
         self.average = average
+        self.optional_subjects = optional_subjects
+        
+    def get_subjects(self):
+        return self.optional_subjects + self.major.list_of_subjects
+        
         
     def __str__(self):
         return f'{self.id}:{self.name}'
@@ -76,15 +80,24 @@ optional_subjects = [
 
 comminucation_engineering = Major('Communication engineering', 160, 80, mandatory_subjects[:-2])
 computer_engineering = Major('Computer engineering', 160, 80, mandatory_subjects)
-
 s1 = Student(1, 'Majed', computer_engineering, 0)
-print(s1.id)
-print(s1.major)
+s2 = Student(2, 'Ahmad', computer_engineering, 0)
 
-print(s1.major.list_of_subject)
-print(s1.major.list_of_subject[0])
-exit()
-for x in s1.major.list_of_subject:
-    print(x)
+# print(s1.id)
+# print(s1.major)
+
+# print(s1.major.list_of_subject)
 
 
+
+import random
+random_subject = random.choice(optional_subjects)
+s1.major.list_of_subject.append(random_subject)
+s1.optional_subjects.append(random_subject)
+# computer_engineering.list_of_subject.append(random_subject)
+print(s1.name)
+for subject in s1.major.list_of_subject:
+    print(subject)
+print(s2.name)
+for subject in s2.major.list_of_subject:
+    print(subject)
