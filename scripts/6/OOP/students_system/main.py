@@ -1,3 +1,4 @@
+from hashlib import new
 from subject import Subject
 
 
@@ -79,17 +80,38 @@ def import_subjects_from_excel():
 def export_to_excel(list_of_objects:list, file_name: str):
     if len(list_of_objects) == 0:
         return
-    for object in list_of_objects:
-        rows.append(object.get_row())
 
     rows = list()
+    
     rows.append(list_of_objects[0].get_columns())
+
     for object in list_of_objects:
         rows.append(object.get_row())
     
     with open(file_name, 'w') as f:
         for row in rows:
             f.write(row + '\n')
+
+
+
+def import_from_excel(sheet_name: str):
+    list_to_fill = list()
+    with open(sheet_name, 'r') as f:
+        f.readline()
+        row = 'aaa'
+        while len(row) > 0:
+
+            row = f.readline()
+            if len(row) > 0:
+                new_object = Subject('dummy_data', 0)
+                new_object.import_row(row)
+            
+            list_to_fill.append(new_object)
+
+    return list_to_fill
+            
+
+
 
 
 
@@ -114,12 +136,18 @@ def get_input():
 
 
 if __name__ == "__main__":
-    list_of_subjects = import_subjects_from_excel()
+    # list_of_subjects = import_subjects_from_excel()
+    list_of_subjects = import_from_excel('test.csv')
+    for subject in list_of_subjects:
+        print(subject)
+    exit()
+    print(list_of_subject)
     list_of_majors = list()
     while True:
         choice = get_input()
         if choice == 0:
             export_subjects_to_excel(list_of_subjects)
+            export_to_excel(list_of_subjects, 'test.csv')
             exit()
         if choice == 1:
             subject_name = input("Name: ")
