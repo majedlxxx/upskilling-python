@@ -76,6 +76,24 @@ def import_subjects_from_excel():
             
     return list_of_subjects
 
+def export_to_excel(list_of_objects:list, file_name: str):
+    if len(list_of_objects) == 0:
+        return
+    for object in list_of_objects:
+        rows.append(object.get_row())
+
+    rows = list()
+    rows.append(list_of_objects[0].get_columns())
+    for object in list_of_objects:
+        rows.append(object.get_row())
+    
+    with open(file_name, 'w') as f:
+        for row in rows:
+            f.write(row + '\n')
+
+
+
+
 
 
 
