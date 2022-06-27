@@ -1,8 +1,10 @@
 from major import Major
 class Student:
     # id, name, major, average
-    def __init__(self, id:int, name:str, major:Major, average:float, optional_subjects:list[Major]=list()):
-        self.id = id
+    id_counter = 0
+    def __init__(self, name:str, major:Major, average:float, optional_subjects=list()):
+        self.id = Student.id_counter
+        Student.id_counter += 1
         self.name = name
         self.major = major #Instance of the Major class / not str
         self.average = average

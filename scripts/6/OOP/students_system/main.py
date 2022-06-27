@@ -94,19 +94,19 @@ def export_to_excel(list_of_objects:list, file_name: str):
 
 
 
-def import_from_excel(sheet_name: str):
+def import_from_excel(sheet_name: str,  object_type):
     list_to_fill = list()
     with open(sheet_name, 'r') as f:
-        f.readline()
-        row = 'aaa'
+        row = f.readline() #column names
+        
         while len(row) > 0:
 
             row = f.readline()
             if len(row) > 0:
-                new_object = Subject('dummy_data', 0)
+                new_object = object_type()
                 new_object.import_row(row)
             
-            list_to_fill.append(new_object)
+                list_to_fill.append(new_object)
 
     return list_to_fill
             
@@ -137,7 +137,7 @@ def get_input():
 
 if __name__ == "__main__":
     # list_of_subjects = import_subjects_from_excel()
-    list_of_subjects = import_from_excel('test.csv')
+    list_of_subjects = import_from_excel('test.csv', Subject)
     for subject in list_of_subjects:
         print(subject)
     exit()

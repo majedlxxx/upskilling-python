@@ -5,7 +5,7 @@ class Major:
     #minimum tawjihi grade requirement
     #list of subjects
     
-    def __init__(self, name:str, credit_hours = 132, min_tawjihi_grade = 65, list_of_subject:list[Subject]=list()) -> None:
+    def __init__(self, name:str, credit_hours = 132, min_tawjihi_grade = 65, list_of_subject = list()):
         self.name = name
         self.credit_hours = credit_hours
         self.min_tawjihi_grade = min_tawjihi_grade
