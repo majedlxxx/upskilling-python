@@ -74,7 +74,7 @@ def upper_str_decorator(function_name):
         possible outputs from the below functions => str, list
     """
     def wrapper():
-        pass
+        pass # Use type => to know if teh output is a list or a string
     return wrapper
 
 @upper_str_decorator
