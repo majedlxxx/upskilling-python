@@ -26,13 +26,15 @@ def clean_list(l):
 
 def clean_list_decorator(function_name):
     def wrapper():
-        # l = [1,2,3, 'test']
         l = function_name()
         new_list = list()
         for item in l:
             if type(item) not in (int, float):
-                continue
-            new_list.append(item)
+                try:
+                    float(item)
+                except:
+                    continue
+            new_list.append(float(item))
         return new_list
             
     return wrapper
@@ -41,7 +43,7 @@ def clean_list_decorator(function_name):
 def input_list():
     l = list()
     for i in range(5):
-        x = input(">> Enter an element: ")
+        x = input("Enter an element: ")
         try:
             x_int = int(x)
             x = x_int
@@ -54,12 +56,28 @@ def input_list():
                 pass
             
         l.append(x)
-        
     return l
-        
-results = input_list()    
+  
+
+def line_to_list(function_name):
+    def wrapper():
+        output = function_name()
+        return output.split(' ')
+    return wrapper
+
+@clean_list_decorator
+@line_to_list
+def input_list_2():
+    data = input(">> ")
+    return data
+
+results = input_list_2()
 print(results)
+  
+        
 exit()
+# results = input_list()    
+# print(results)
 
 arr = ['test', 1, 'test', 2.5, 0]
 
@@ -68,24 +86,4 @@ print(sum_array(clean_list(arr)))
 
 
 
-def upper_str_decorator(function_name):
-    """
-        upper case every charecter in any output:
-        possible outputs from the below functions => str, list
-    """
-    def wrapper():
-        pass # Use type => to know if teh output is a list or a string
-    return wrapper
-
-@upper_str_decorator
-def hello():
-    return 'Hello' # => HELLO
-
-@upper_str_decorator
-def greeting_message():
-    return 'Hello User' # => HELLO USER
-
-@upper_str_decorator
-def get_messages():
-    return ['test ',  'Hello '] # => ['TEST', 'HELLO ']
 
