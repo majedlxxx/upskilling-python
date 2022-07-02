@@ -2,6 +2,7 @@
     
     d e f
     h i j
+    some of the methods below can be either class or static methods. remove self and replace accordingly
 '''
 
 
