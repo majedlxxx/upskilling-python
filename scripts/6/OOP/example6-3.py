@@ -44,13 +44,44 @@ class Grid:
     def remove_row(self, index):
         self.rows.pop(index)
         
-    def all_rows_are_equal():
-        """
-            Returns True of all rows have the same length
-        """
-        pass
+    def all_rows_are_equal(self):
+        if not self.rows: # len(self.rows) != 0
+            return True
+        
+        # row_lengths = set()
+        # for row in self.rows:
+        #     row_lengths.add(len(row.data))
+        # return len(row_lengths) == 1
+        
+        row_length = len(self.rows[0].data)
+        for i in range(1,len(self.rows)):
+            if len(self.rows[i].data) != row_length:
+                return False
+            
+        return True
     
-    def square_grid():
+        # if len(row_lengths) == 1:
+        #     return True
+        # return False
+
+            
+            
+            
+    def get_size(self):
+        """
+            (rows, columns)
+            empty = > (0, 0)
+            ()  = > incomplete a b c
+                               d f 
+        """ 
+        if not self.rows:
+            return (0,0)
+        if not self.all_rows_are_equal():
+            return tuple()
+        # at this point I know I have a complete grid
+        return (len(self.rows), len(self.rows[0].data))
+    
+    def is_square_grid(self):
         """
             This function return True if the grid is square and False otherwise
             Square grid examples:
@@ -68,12 +99,22 @@ class Grid:
                 
                 a b c
                 d e f
-                
-            
-            
             
         """
-        pass
+        
+        size = self.get_size()
+        if not size: #len(size) == 0
+            return False
+        return size[0] == size[1]
+             
+        # if len(self.rows) == 0: # not self.rows
+        #     return True
+        # if self.all_rows_are_equal() and len(self.rows[0].data) == len(self.rows):
+        #     return True
+        # else:
+        #     return False
+        
+        # return self.all_rows_are_equal() and len(self.rows[0].data) == len(self.rows)
         
     @classmethod
     def grid_from_lists(cls, grid_list):
@@ -102,6 +143,25 @@ class Grid:
 
 
 if __name__ == "__main__":
+    g1 = Grid()
+    r1 = Row()
+    r1.add_value_to_row('a') # 1 x 1
+    r1.add_value_to_row('b') # 1 x 2
+    r2 = Row()
+    r2.add_value_to_row('c')
+    
+    r2.add_value_to_row('d')
+    '''
+        a b
+        c d
+    '''
+    g1.add_row(r1)
+    g1.add_row(r1)
+    g1.add_row(r2)
+    print(g1)
+    print(g1.is_square_grid())
+    print(g1.get_size())
+    exit()
     r1 = Row()
     r1.add_value_to_row('a')
     r1.add_value_to_row('b')
@@ -139,6 +199,15 @@ if __name__ == "__main__":
     
 '''
     Modify the above and add necessary classes to do the following:
+    
+    Row:
+        IntRow => add_value_to_row
+        CharRow
+        
+    Grid:
+        IntGrid => addition subtraction etc
+        CharGrid
+        
     1. complete the above functions
     2. there can be 2 types of grids/rows int based or charectar based
     1 3 2
@@ -147,6 +216,8 @@ if __name__ == "__main__":
     
     a b c
     c e f
-    g h i 
+    g h i
+    
+     
  
 '''
