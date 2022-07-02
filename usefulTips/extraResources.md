@@ -19,10 +19,12 @@
 * [Youtube video](https://www.youtube.com/watch?v=SWYqp7iY_Tc&t=62s)
 
 
+## Object Oriented Programming example:
+* [Object Orinter Programming / Youtube](https://www.youtube.com/watch?v=Ej_02ICOIgs)
 ## Practice: 
 * [Warmup codingbat](https://codingbat.com/python/Warmup-1)
 
-
+## 
 
 ## Codeforces problemsets
 * [Team](https://codeforces.com/problemset/problem/231/A)

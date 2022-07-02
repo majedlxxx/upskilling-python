@@ -18,7 +18,18 @@ class Student:
         Student.id_counter += 1
         # x = 'test' # local function variable
         self.name = name # Instance level attribute
-        
+    
+    @staticmethod # neither self or cls is passed to the function
+    def print_list_of_students(list_of_students):
+        for student in list_of_students:
+            student.describe()
+            print('------')
+            
+            
+    # Refer to the students example for class method
+    
+    
+    #the class is passed as the first parameter by default
     def __str__(self):
         return self.name
     
@@ -52,7 +63,9 @@ if __name__ == "__main__":
     st2 = Student('Ahmad')
     st2.avg = 50
     print("Student 2:", st2.__dict__)
-
+    
+    Student.print_list_of_students([st, st2])
+    exit()
     #Student.id += 1 # Modifying instance level attribute
     #print(Student.id)
     
