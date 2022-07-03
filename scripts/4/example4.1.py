@@ -21,5 +21,7 @@ print("Computer Engineering: ", computer_engineering_topics)
 print("Communication Engineering: ", communication_engineering_topics)
 print("Common topics: ", computer_engineering_topics.intersection(communication_engineering_topics))
 print("Extra topics in communication engineering: ", communication_engineering_topics.difference(computer_engineering_topics))
-print("Extra topics in computer engineering: ", computer_engineering_topics.difference(communication_engineering_topics))
-    
+print("Extra topics in computer engineering: ", computer_engineering_topics.difference(communication_engineering_topics)
+      
+      teste.startswith()
+      

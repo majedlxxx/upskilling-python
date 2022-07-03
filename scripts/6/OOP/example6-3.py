@@ -15,10 +15,8 @@ class Row: # [a,b,c]
     def __init__(self):
         self.data = list()
     
-    def add_value_to_row(self, value):
-        assert isinstance(value, str) and len(value) == 1, "value must be a single charecter"
-        self.data.append(value)
     
+
     def remove_value_from_row(self, value):
         self.data.remove(value)
     
@@ -29,11 +27,27 @@ class Row: # [a,b,c]
             new_row.add_value_to_row(item)
         return new_row
     
+    # def __str__(self):
+    #     return str(self.data)
+    
+    
+class IntRow(Row): # [1,2,3]
+    def __str__(self):
+        tmp_data = list()
+        for item in self.data:
+            tmp_data.append(str(item))
+        return " ".join(tmp_data)
+    
+    def add_value_to_row(self, value):
+        pass
+    
+
+class CharRow(Row): # ['a', 'b', 'c']
     def __str__(self):
         return " ".join(self.data)
-    
-    
-    
+    def add_value_to_row(self, value):
+        pass
+
 class Grid:
     def __init__(self):
         self.rows = list()
