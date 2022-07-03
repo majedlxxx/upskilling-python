@@ -10,3 +10,11 @@
 
 * shift + arrow(up/down) => to highlight multiple lines
 
+* highlight multiple lines then ctrl + / => comment / uncomment multiple lines
+
+* ctrl + alt + arrow(down/up) => multiple cursors
+* ctrl + p => switch files
+* ctrl + shift + p => commands => examples: install extensions
+* highlight multiple lines then tab => to increase identation
+* highlight multiple lines then tab + shift => to decrease identation
+* ctrl + tab => to switch tabs
