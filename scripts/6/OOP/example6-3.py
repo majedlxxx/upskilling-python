@@ -195,11 +195,43 @@ class IntGrid(Grid):
         return answer
             
     def __sub__(self, other):
-        pass
+        assert self.get_size() == other.get_size(), "Cannot subtract grids with different sizes"
+        answer  = IntGrid()
+        for self_row, other_row in zip(self.rows, other.rows):
+            new_row = IntRow()
+            for self_element, other_element in zip(self_row.data, other_row.data):
+                new_row.add_value_to_row(self_element - other_element)
+            answer.add_row(new_row)
+        return answer
     
     def __mul__(self, other):
-        pass
-
+        self_size = self.get_size()
+        other_size = other.get_size()
+        
+        # assert self_size[0] == other_size[1] and self_size[1] == other_size[0], "Wrong size combination"
+        assert self_size[::-1] == other_size, "Wrong size combination"
+        
+        # other_columns = list()
+        # for i in range(other_size[1]):
+        #     other_columns.append(list())
+            
+        other_columns = [ list() for i in range(other_size[1])]
+        # [
+        #     [],
+        #     []
+        # ]
+        
+        for column_index in range(other_size[0]):
+            for row in other.rows:
+                other_columns[column_index].append(row[column_index])
+                    
+            
+            
+            
+        for col in other_columns:
+            print(col)
+        
+        
 if __name__ == "__main__":
     g1 = IntGrid.grid_from_lists(
         [
