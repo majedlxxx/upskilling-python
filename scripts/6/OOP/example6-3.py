@@ -15,6 +15,12 @@ class Row: # [a,b,c]
     def __init__(self):
         self.data = list()
     
+<<<<<<< HEAD
+    
+    def add_value_to_row(self, value): # to be revisited
+        self.data.append(value)
+=======
+>>>>>>> 04de11b5b7de9bb9dfb45c41527dfc5d950c75de
     
 
     def remove_value_from_row(self, value):
@@ -30,6 +36,30 @@ class Row: # [a,b,c]
     # def __str__(self):
     #     return str(self.data)
     
+<<<<<<< HEAD
+    
+class IntRow(Row): # [1,2,3]
+    def __str__(self):
+        tmp_data = list()
+        for item in self.data:
+            tmp_data.append(str(item))
+        return " ".join(tmp_data)
+    
+    def add_value_to_row(self, value):
+        assert isinstance(value, int), "Value must be an integer"
+        self.data.append(value)
+    
+
+class CharRow(Row): # ['a', 'b', 'c']
+    def __str__(self):
+        return " ".join(self.data)
+    
+    def add_value_to_row(self, value):
+        assert isinstance(value, str) and len(value) == 1, "Value must be a single character"
+        self.data.append(value)
+    
+
+=======
     
 class IntRow(Row): # [1,2,3]
     def __str__(self):
@@ -47,11 +77,12 @@ class CharRow(Row): # ['a', 'b', 'c']
         return " ".join(self.data)
     def add_value_to_row(self, value):
         pass
+>>>>>>> 04de11b5b7de9bb9dfb45c41527dfc5d950c75de
 
 class Grid:
     def __init__(self):
         self.rows = list()
-    
+            
     def add_row(self, row):
         self.rows.append(row)
         
@@ -67,18 +98,15 @@ class Grid:
         #     row_lengths.add(len(row.data))
         # return len(row_lengths) == 1
         
+        # if len(row_lengths) == 1:
+        #     return True
+        # return False
         row_length = len(self.rows[0].data)
         for i in range(1,len(self.rows)):
             if len(self.rows[i].data) != row_length:
                 return False
             
-        return True
-    
-        # if len(row_lengths) == 1:
-        #     return True
-        # return False
-
-            
+        return True  
             
             
     def get_size(self):
@@ -116,11 +144,6 @@ class Grid:
             
         """
         
-        size = self.get_size()
-        if not size: #len(size) == 0
-            return False
-        return size[0] == size[1]
-             
         # if len(self.rows) == 0: # not self.rows
         #     return True
         # if self.all_rows_are_equal() and len(self.rows[0].data) == len(self.rows):
@@ -130,6 +153,11 @@ class Grid:
         
         # return self.all_rows_are_equal() and len(self.rows[0].data) == len(self.rows)
         
+        size = self.get_size()
+        if not size: #len(size) == 0
+            return False
+        return size[0] == size[1]
+             
     @classmethod
     def grid_from_lists(cls, grid_list):
         """
@@ -142,7 +170,7 @@ class Grid:
         """
         new_grid = cls()
         for row_list in grid_list:
-            new_row = Row.row_from_list(row_list)
+            new_row = Row.row_from_list(row_list) # Needs rewriting
             new_grid.add_row(new_row)
             
         return new_grid
@@ -154,9 +182,52 @@ class Grid:
         return results.strip('\n')
         
 
-
+class IntGrid(Grid):
+        
+    def __add__(self, other): # g1(self) + g2(other)
+        assert self.get_size() == other.get_size(), "Cannot add grids with different sizes"
+        answer  = IntGrid()
+        for self_row, other_row in zip(self.rows, other.rows):
+            new_row = IntRow()
+            for self_element, other_element in zip(self_row.data, other_row.data):
+                new_row.add_value_to_row(self_element + other_element)
+            answer.add_row(new_row)
+        return answer
+            
+    def __sub__(self, other):
+        pass
+    
+    def __mul__(self, other):
+        pass
 
 if __name__ == "__main__":
+    g1 = IntGrid.grid_from_lists(
+        [
+            [1, 5],
+            [-4, 3]
+            
+        ]
+    )
+    g2 = IntGrid.grid_from_lists(
+        [
+            [2, -1],
+            [4, -1]
+        ]
+    )
+    g3 = g1 + g2
+    g4 = g1.__add__(g2)
+   
+    print("G3")
+    print(g3)
+    
+    print("\n\nG4")
+    print(g4)
+    
+    
+    
+    
+    
+    exit()
     g1 = Grid()
     r1 = Row()
     r1.add_value_to_row('a') # 1 x 1
