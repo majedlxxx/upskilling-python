@@ -15,12 +15,9 @@ class Row: # [a,b,c]
     def __init__(self):
         self.data = list()
     
-<<<<<<< HEAD
     
     def add_value_to_row(self, value): # to be revisited
         self.data.append(value)
-=======
->>>>>>> 04de11b5b7de9bb9dfb45c41527dfc5d950c75de
     
 
     def remove_value_from_row(self, value):
@@ -36,7 +33,6 @@ class Row: # [a,b,c]
     # def __str__(self):
     #     return str(self.data)
     
-<<<<<<< HEAD
     
 class IntRow(Row): # [1,2,3]
     def __str__(self):
@@ -59,25 +55,6 @@ class CharRow(Row): # ['a', 'b', 'c']
         self.data.append(value)
     
 
-=======
-    
-class IntRow(Row): # [1,2,3]
-    def __str__(self):
-        tmp_data = list()
-        for item in self.data:
-            tmp_data.append(str(item))
-        return " ".join(tmp_data)
-    
-    def add_value_to_row(self, value):
-        pass
-    
-
-class CharRow(Row): # ['a', 'b', 'c']
-    def __str__(self):
-        return " ".join(self.data)
-    def add_value_to_row(self, value):
-        pass
->>>>>>> 04de11b5b7de9bb9dfb45c41527dfc5d950c75de
 
 class Grid:
     def __init__(self):
@@ -207,9 +184,9 @@ class IntGrid(Grid):
     def __mul__(self, other):
         self_size = self.get_size()
         other_size = other.get_size()
-        
+        print(other_size)
         # assert self_size[0] == other_size[1] and self_size[1] == other_size[0], "Wrong size combination"
-        assert self_size[::-1] == other_size, "Wrong size combination"
+        # assert self_size[::-1] == other_size, "Wrong size combination"
         
         # other_columns = list()
         # for i in range(other_size[1]):
@@ -221,9 +198,9 @@ class IntGrid(Grid):
         #     []
         # ]
         
-        for column_index in range(other_size[0]):
+        for column_index in range(other_size[1]):
             for row in other.rows:
-                other_columns[column_index].append(row[column_index])
+                other_columns[column_index].append(row.data[column_index])
                     
             
             
@@ -240,12 +217,16 @@ if __name__ == "__main__":
             
         ]
     )
+    
     g2 = IntGrid.grid_from_lists(
         [
-            [2, -1],
-            [4, -1]
+            [2, -1, 1],
+            [4, -1, 0]
         ]
     )
+    
+    g1 * g2
+    exit()
     g3 = g1 + g2
     g4 = g1.__add__(g2)
    
