@@ -32,3 +32,7 @@
 * [System of Equations](https://codeforces.com/problemset/problem/214/A)
 * [Good Matrix Elements](https://codeforces.com/problemset/problem/177/A2)
 * [Remove Smallest](https://codeforces.com/problemset/problem/1399/A)
+
+## Big O notation exercise
+[Brilliant](https://brilliant.org/practice/big-o-notation/)
+[GeeksForGeeks](https://www.geeksforgeeks.org/practice-questions-time-complexity-analysis/)
