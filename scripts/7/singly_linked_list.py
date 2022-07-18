@@ -1,6 +1,4 @@
-from hashlib import new
-from logging import exception
-from signal import raise_signal
+
 
 
 class Node:
@@ -47,13 +45,13 @@ class ConventionalList: #singly linked list
         node = self.head
         if self.is_empty():
             raise IndexError("Index out of range")
-            return
+            
             
         while current_index < index:
             node = node.next_node
             if node == None:
                 raise IndexError("Index out of range")
-                return
+                
             current_index += 1
         return node
 
@@ -130,7 +128,15 @@ class ConventionalList: #singly linked list
         this function takes an integer (value) and searches for the integer 
         n in the list and returns it's index or -1 if value is not found
         """
-        pass
+        index = 0
+        node = self.head
+        
+        while node != None:
+            if node.value == value:
+                return index
+            node = node.next_node
+            index += 1        
+        return -1
     
     def remove(self, value: int) -> None:
         """
@@ -138,7 +144,21 @@ class ConventionalList: #singly linked list
             remove the first instance of that value
             or raise a value error if the value does not exist
         """
-        pass
+        
+        prev = None
+        node = self.head
+        
+        while node != None:
+            
+            if node.value == value:
+                prev.next_node = node.next_node
+                del node
+                return
+            
+            # odd case head/tail
+            
+            prev = node
+            node = node.next_node
     
     def remove_all(self, value: int) -> None:
         """
