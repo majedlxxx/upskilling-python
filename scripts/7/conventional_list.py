@@ -125,8 +125,28 @@ class ConventionalList: #singly linked list
         self.tail = new_tail
         return value
         
+    def find(self, value: int) -> int:
+        """
+        this function takes an integer (value) and searches for the integer 
+        n in the list and returns it's index or -1 if value is not found
+        """
+        pass
     
-            
+    def remove(self, value: int) -> None:
+        """
+            Replicate python's list remove behaviour 
+            remove the first instance of that value
+            or raise a value error if the value does not exist
+        """
+        pass
+    
+    def remove_all(self, value: int) -> None:
+        """
+            same as the above but remove all instances
+        """
+        pass
+        
+                
             
     
     
