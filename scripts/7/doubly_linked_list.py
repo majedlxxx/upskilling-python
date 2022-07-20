@@ -1,26 +1,22 @@
 
 
-
 class Node:
-    def __init__(self, value:int, next_node = None) -> None:
+    def __init__(self, value:int, next_node=None, prev_node=None) -> None:
         self.value = value
         self.next_node = next_node
+        self.prev_node = prev_node
         
     def __str__(self) -> str:
         return str(self.value)
-        
-        
+    
 
-class SinglyLinkedList: #singly linked list
-    """
-    head => first element in the list
-    tail => last element in the list
-    """
+class DoublyLinkedList:
     def __init__(self) -> None:
         self.head = None
         self.tail = self.head
+        self.length = 0
         
-    def get_tail(self) -> Node: #O(n) can be replaced with a dynamic tail attribute
+    def get_tail(self) -> Node: #O(n) can be replaced with a dynamic tail attribute / Not used
         node = self.head
         while node.next_node != None:
             node = node.next_node
@@ -28,17 +24,19 @@ class SinglyLinkedList: #singly linked list
     
     def is_empty(self) -> bool:
         return self.head == None
-        
+        #return self.length == 0
         
         
     def append(self, value:int) -> None: #O(1)
-        new_node = Node(value)
-        if self.is_empty(): #empty list
+        new_node = Node(value, None, self.tail)
+        if self.is_empty():
             self.head = new_node
             self.tail = new_node
             return
         self.tail.next_node = new_node
         self.tail = new_node
+        
+       
         
     def get_ith_element(self, index: int) -> Node: #to simulate a[i] #O(n)
         current_index = 0 #a[3]
@@ -56,18 +54,6 @@ class SinglyLinkedList: #singly linked list
         return node
 
     def insert_at(self, index: int, value: int) -> None:
-        """
-        1 => 3 => 6 => 15 => 20 => None
-        insert_at(2, 30)
-        
-        1 => 3 => 30 => 6 => 15 => 20 => None
-        
-        Odd cases:
-        large index
-        empty list
-        
-        """
-        
         if self.is_empty():
             if index == 0:
                 self.append(value)
@@ -76,18 +62,21 @@ class SinglyLinkedList: #singly linked list
         
         current_index = 0
         node = self.head
-        while current_index < index - 1:
+        while current_index < index:
             node = node.next_node
             if node == None: # large index
                 raise IndexError("Index out of range")
             current_index += 1
-        prev_node = node #3
-        next_node = node.next_node #6
-        new_node = Node(value, next_node) #30
-        prev_node.next_node = new_node
+            
+        
+        new_node = Node(value, node.next_node, node)
+        node.next_node.prev_node = new_node
+        node.next_node = new_node
+        
+
         
         
-    def length(self) -> int: #O(n) / we can replace it with a length attribute
+    def length(self) -> int: #O(n) / not needed because we are using the length attribute
         
         node = self.head
         counter = 0
@@ -97,30 +86,18 @@ class SinglyLinkedList: #singly linked list
         
         return counter
     
-    def pop(self, index=-1) -> int: #O(n) 
-        """
-            Removes the last node and returns it's value
-            -1 => remove last else remove indexth node
-            
-        """
-        #1 => 2 => 5(new tail) => 7(current tail) => None
+    def pop(self, index=-1) -> int: #O(1) 
         if self.is_empty():
             return
-        if self.head == self.tail: #one element in the list
+        if self.head is self.tail:
             value = self.head.value
             del self.head
             self.head = self.tail = None
             return value
             
-        node = self.head
-        while node.next_node is not self.tail:
-            node = node.next_node
-                        
-        new_tail = node
-        new_tail.next_node = None
         value = self.tail.value
+        self.tail.prev_node.next_node = None
         del self.tail
-        self.tail = new_tail
         return value
         
     def find(self, value: int) -> int:
@@ -139,13 +116,6 @@ class SinglyLinkedList: #singly linked list
         return -1
     
     def remove(self, value: int) -> None: #O(n)
-        """
-            Replicate python's list remove behaviour 
-            remove the first instance of that value
-            or raise a value error if the value does not exist
-        """
-        
-        prev = None
         node = self.head
         
         while node != None:
@@ -153,25 +123,21 @@ class SinglyLinkedList: #singly linked list
             if node.value == value:
                 if node is self.head:
                     self.head = node.next_node
+                    self.head.prev_node = None
                 
                 elif node is self.tail:
-                    self.tail = prev
+                    self.tail = node.prev_node
                     self.tail.next_node = None
                 else:  
-                    prev.next_node = node.next_node
-                    
+                    node.prev_node.next_node = node.next_node
+                    node.next_node.prev_node = node.prev_node
                     
                 del node
                 return
             
-            prev = node
             node = node.next_node
     
     def remove_all(self, value: int) -> None:
-        """
-            same as the above but remove all instances
-        """
-        prev = None
         node = self.head
         nodes_to_delete = list()
         
@@ -180,23 +146,23 @@ class SinglyLinkedList: #singly linked list
             if node.value == value:
                 if node is self.head:
                     self.head = node.next_node
+                    self.head.prev_node = None
                 
                 elif node is self.tail:
-                    self.tail = prev
+                    self.tail = self.tail.prev_node
                     self.tail.next_node = None
                 else:  
-                    prev.next_node = node.next_node
+                    node.prev_node.next_node = node.next_node
+                    node.next_node.prev_node = node.prev_node
                     
                     
                 nodes_to_delete.append(node)
                 
-            else:
-                prev = node
             node = node.next_node
                 
         for node in nodes_to_delete:
             del node
-            
+    
     def __str__(self) -> str:
         results = list()
         node = self.head
@@ -205,44 +171,32 @@ class SinglyLinkedList: #singly linked list
             node = node.next_node
         return str(results)
     
+    def print_reverse(self) -> None:
+        results = list()
+        node = self.tail
+        while node != None:
+            results.append(node.value)
+            node = node.prev_node
+        print(results)
+    
+    
 if __name__ == "__main__":
-    l = SinglyLinkedList()
-    print("Length: ",l.length())
-    #1 => 3 => 6 => 15 => 20 => 3 => 5 => None
-    for i in (3,3, 3, 1, 3, 15,3, 20, 3,3, 5, 3):
+    l = DoublyLinkedList()
+    for i in (3,2,3,52,1,3,5,3,3):
         l.append(i)
-    print("find: ", l.find(30))
-    
+        
+
+
+    # print(l.pop())
+    l.remove(1)
+    print(l)
+    print("Reverse: ", end = " ")
+    l.print_reverse()
     l.remove_all(3)
-    l.remove(5)
-    
-    print("tail:", l.tail)    
-    node = l.head
-    while node != None:
-        print(node, end=" ")
-        node = node.next_node
-        
-    exit()
-    print()
-    
-
-    print("Length: ",l.length())
-    l.insert_at(2, 30)
-    print("Length after insertion: ",l.length())
-
-    node = l.head
-    while node != None:
-        print(node)
-        node = node.next_node
-        
-    exit()
-
-    print("After popping")
-    l.pop()
-    l.pop()
-    node = l.head
-    while node != None:
-        print(node)
-        node = node.next_node
-        
-        
+    print(l)
+    for i in (1, 15, 20):
+        l.append(i)
+    print(l)
+    l.insert_at(0, 7)
+    print(l)
+    l.print_reverse()
