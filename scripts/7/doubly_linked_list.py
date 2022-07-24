@@ -29,12 +29,14 @@ class DoublyLinkedList:
         
     def append(self, value:int) -> None: #O(1)
         new_node = Node(value, None, self.tail)
+        self.length += 1
         if self.is_empty():
             self.head = new_node
             self.tail = new_node
             return
         self.tail.next_node = new_node
         self.tail = new_node
+        
         
        
         
@@ -54,14 +56,24 @@ class DoublyLinkedList:
         return node
 
     def insert_at(self, index: int, value: int) -> None:
+        self.length += 1
         if self.is_empty():
             if index == 0:
                 self.append(value)
             else:
+                self.length -= 1
                 raise IndexError("Index out of range")
         
         current_index = 0
         node = self.head
+        
+        
+        if index == 0:
+            new_node = Node(value, self.head, None)
+            self.head.prev_node = new_node
+            self.head = new_node
+            return
+        
         while current_index < index:
             node = node.next_node
             if node == None: # large index
@@ -93,11 +105,13 @@ class DoublyLinkedList:
             value = self.head.value
             del self.head
             self.head = self.tail = None
+            self.length -= 1
             return value
             
         value = self.tail.value
         self.tail.prev_node.next_node = None
         del self.tail
+        self.length -= 1
         return value
         
     def find(self, value: int) -> int:
@@ -130,9 +144,9 @@ class DoublyLinkedList:
                     self.tail.next_node = None
                 else:  
                     node.prev_node.next_node = node.next_node
-                    node.next_node.prev_node = node.prev_node
-                    
+                    node.next_node.prev_node = node.prev_node  
                 del node
+                self.length -= 1
                 return
             
             node = node.next_node
@@ -162,6 +176,7 @@ class DoublyLinkedList:
                 
         for node in nodes_to_delete:
             del node
+            self.length -= 1
     
     def __str__(self) -> str:
         results = list()

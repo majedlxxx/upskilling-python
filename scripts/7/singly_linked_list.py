@@ -76,6 +76,12 @@ class SinglyLinkedList: #singly linked list
         
         current_index = 0
         node = self.head
+        
+        if index == 0:
+            new_node = Node(value, self.head)
+            self.head = new_node
+            return
+            
         while current_index < index - 1:
             node = node.next_node
             if node == None: # large index
