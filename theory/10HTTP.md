@@ -27,7 +27,7 @@
 ![POST Request data](Images/post_data.png)
 ![Get Request data](Images/get_data.PNG)
 * Most common HTTP Methods and when to use them (Note that html only recognizes GET and POST methods However other methods can be used using Javascript):
-    1. GET: Retrieve data. eg: search.
+    1. GET: Retrieve data. eg: search. view profile.
     2. HEAD: Similar to GET, but it will only return the headers / not the content (More on that when explaining the HTTP Response).
     2. POST: Send data / Create objects. eg: Login(sending username/password), Signup(Creating a profile)
     3. PATCH: Update data eg: Update Profile(Change phone no)
@@ -50,5 +50,39 @@
 * Most common headers:
 1. Content-Type: used to specify the content that you are sending in the HTTP payload. (Most common types are mentioned above.)
 2. User-Agent: Used to specify the browser/Operating system used by the client. For example user-agent is used by google.com to return different html codes depending in your OS for example: Android vs Windows, another example is how websites for example Microsoft teams will give you an option to download different versions of the App based on your Operating system.
+
+
+
+### HTTP Response
+* HTTP Response(it's the response sent back to the browser) main elements:
+1. Response header: Meta data about the response data.
+2. Response data.
+3. Status code.
+
+### Status code.
+* It's a numeric code 100-600 (official ones).
+* each hundred represent a certain category:
+    1. 100-200 informational (Rare).
+    2. 200-300 Successful request.(the HTTP request has been processed without issues):
+        * 200 OK
+        * 201 CREATED: when something you asked for was created successfully(Eg: create profile, upload file, post a tweet.
+        * 204 NO CONTENT: we got a response back but without data(response size: 0).
+
+    3. 300-400 Redirection: It's used when the user is redirected to another web page(eg: visiting facebook.com from your smartphone will redirect you to m.facebook.com)
+        * More on that later.
+
+    4. 400-500 Client Side error(The HTTP request is malformed / follows incorrect format etc ....)
+        * 400 BAD REQUEST: (Sending unexpected data that cannot be understood by the backend server for example sending username and phone_no to a login API where the backend was expecting username/password combo) or having a syntax error with the sent data (eg: forgetting a comma when sending json object)
+        
+        * 401 UNAUTHORIZED: Not logged in (eg: trying to access mywebsite.com/my-profile without logging in) / Backend doesn't know my identity.
+
+        * 403 FORBIDDEN: Despite being logged in you don't have access to certain data. (Eg: accessing a private profile for someone who is not your friend on Facebook / accessing someone's profile when you are blocked). the backend recognize my identity but I am not allowed to access the requested resource.
+
+        * 404 NOT FOUND: Try to access a resource that doesn't exist. eg: trying to access https://google.com/fjdkfjdkfjdkj
+
+        * 405 METHOD NOT ALLOWED: Using methods that are not allowed on a certain URL API(eg: curl -X POST https://www.google.com/search?q=car) the search API for google only accepts GET requests when send a POST request using curl (More on that later) we get back a 405 error.
+
+        * 408 REQUEST TIMEOUT: This usually caused by a slow internet connection. servers usually have timeout set for http connection establishing mechanism. for example if the browser took a minute to establish connection with google.com Google will shutdown the connection
+
 
 
