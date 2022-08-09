@@ -1,0 +1,23 @@
+<!DocType html>
+<html>
+<head>
+    <title> Signup </title>
+
+</head>
+
+
+<body>
+    <form action="/signup" method="POST">
+        First name <input name="fname"> <br>
+        Last name <input name="lname"> <br>
+        Username <input name="username" /> <br>
+        Password <input name="password" type="password" /> <br>
+        confirm Password <input name="password2" type="password" /> <br>
+        {% if error %}
+            <p style="color:red"> {{ error }} </p>
+        {% endif %}
+        <input type="submit">
+    </form>
+</body>
+
+</html>

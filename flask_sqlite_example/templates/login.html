@@ -1,0 +1,21 @@
+<!DocType html>
+<html>
+<head>
+    <title> Login Page </title>
+
+</head>
+
+
+<body>
+    <form action="/login" method="POST">
+        Username <input name="username" /> <br>
+        Password <input name="password" type="password" /> <br>
+        <input type="submit"><br>
+        {% if error %}
+            <p style="color:red"> {{ error }} </p>
+        {% endif %}
+        Dont have account <a href='/signup'> Register now </a>
+    </form>
+</body>
+
+</html>
