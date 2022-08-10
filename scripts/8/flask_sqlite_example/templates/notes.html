@@ -1,1 +1,83 @@
-Notes
+<!DocType html>
+<html>
+<head>
+    <title> Notes </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="padding:10" href="#">Upskilling</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Signin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class = "center container">
+        <h2> Add a note {{username}} </h2>
+
+
+
+        <form action="/notes" method="POST">
+            
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" name="title">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+            </div>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            {% endif %}
+
+            {% if message %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                 </div>
+            {% endif %}
+ 
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary">
+            </div>
+          </form>
+
+        <h2> My notes </h2>
+
+        {% for note in notes %}
+
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{note.title}}</h5>
+                    <p class="card-text">{{note.body}}</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+
+
+</html>

@@ -1,10 +1,10 @@
-from crypt import methods
 from flask import Flask, render_template, request, redirect, make_response
 import db_manager
 
 
 db_manager.build_db()
 app = Flask(__name__)
+
 
 
 def get_user() -> str:
@@ -14,8 +14,16 @@ def get_user() -> str:
     if 'token' not in request.cookies:
         return ""
     token = request.cookies['token']
+    # request.headers['cookies']
     return db_manager.get_user_from_token(token)
     
+    
+@app.route('/', methods=["GET"])
+def home():
+    if get_user():
+        return redirect('/notes')
+    return redirect('/login')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -51,9 +59,27 @@ def signup():
 
 @app.route('/notes', methods=["GET", "POST"])
 def notes():
-    if get_user():
-        return render_template('notes.html')
-    else:
+    username = get_user()
+    if not username:
         return redirect('/login')
+    
+    if request.method == "GET":
+        return render_template('notes.html', notes=db_manager.get_notes(username), username=username)
+    
+    title = request.form['title']
+    content = request.form['content']
+    
+    if not db_manager.validate_title(username, title):
+        return render_template('notes.html', error="You have used this title before", notes=db_manager.get_notes(username), username=username)
+    db_manager.add_note(username, title, content)
+    
+    return render_template('notes.html', message="Created successfully", notes=db_manager.get_notes(username), username=username)
+    
 
+@app.route('/logout', methods=['GET'])
+def logout():
+    resp = make_response(redirect('/login'))
+    # resp.set_cookie('token'. '')
+    resp.delete_cookie('token')
+    return resp
 app.run(debug=True)
