@@ -2,9 +2,10 @@
 
 {% block 'body' %}
 
-    <form>
-        username: <input>
-        password: <input>
+    <form action='/account/login' method='POST'>
+        {% csrf_token %}
+        username: <input name='username'>
+        password: <input name='password'>
         <input type="submit">
     </form>
     
