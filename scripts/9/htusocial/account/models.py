@@ -13,9 +13,10 @@ class Account(models.Model):
     def __str__(self) -> str:
         return self.fname + " " + self.lname
 
+
     
 #Account.objects.all() => select * from account_account;
 
 #Account.objects.filter(fname="majed") => select * from account where fname='majed';
 #Account.objects.filter(fname="majed", password = '1234') =>  select * from account where fname='majed' and password='1234';
-# Account(fname='majed', lname='lutfi', password='1234'); a.save() = > insert into account(fname, lname, password) values('majed', 'lutfi', '1234');
+#a=Account(fname='majed', lname='lutfi', password='1234'); a.save() = > insert into account(fname, lname, password) values('majed', 'lutfi', '1234');
