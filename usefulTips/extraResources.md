@@ -36,3 +36,6 @@
 ## Big O notation exercise
 [Brilliant](https://brilliant.org/practice/big-o-notation/)
 [GeeksForGeeks](https://www.geeksforgeeks.org/practice-questions-time-complexity-analysis/)
+
+## Django
+[Django-book](https://django-book.readthedocs.io/en/latest/)

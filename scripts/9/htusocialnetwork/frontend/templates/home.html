@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+    <h3> Welcome {{request.session.username}} </h3>
+    
+    <form action='/post/create' method='POST'>
+        {% csrf_token %}
+        {{ create_post_form.as_p }}
+        <input type="submit" class="btn btn-secondary">
+    </form>
+
+    {% if messages %}
+       {% include 'messages.html' %}
+    {% endif %}
+
+
+    {% for post in posts %}
+        {% comment %} <p>
+            <h3> {{post.title}}  </h3>
+            {{post.content}}
+        </p> {% endcomment %}
+        -------
+
+        <div class="col-md-4">
+            <h2>{{post.title}}</h2>
+            <p>{{post.content}} </p>
+        </div>
+
+      
+    {% endfor %}
+
+
+{% endblock %}

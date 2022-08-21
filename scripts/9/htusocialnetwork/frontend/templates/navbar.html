@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">HTU Social Network</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/account/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account/signup">Signup</a>
+          </li>
+          {% if 'username' in request.session %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Posts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Freinds</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/account/logout">logout {{request.session.username}}</a>
+            </li>
+          {% endif %}
+        </ul>
+   
+      </div>
+    </div>
+  </nav>
