@@ -21,7 +21,10 @@ from account.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('api/account/', include('account.api_urls')),
+    
     path('post/', include('post.urls')),
+    path('api/post/', include('post.api_urls')),
     path('', home)
     
 ]
